@@ -58,4 +58,12 @@ class User extends Authenticatable implements HasMedia
     public function scopeIsActive(Builder $builder) {
         return $builder->where('is_active', 1);
     }
+
+    public function adminlte_image() {
+        return $this->getFirstMediaUrl('avatars');
+    }
+
+    public function adminlte_desc() {
+        return 'Member since '.$this->created_at->format('M. Y');
+    }
 }

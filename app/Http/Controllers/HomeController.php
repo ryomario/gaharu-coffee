@@ -16,7 +16,7 @@ use Modules\SalesReturn\Entities\SaleReturnPayment;
 
 class HomeController extends Controller
 {
-
+    
     public function index() {
         $sales = Sale::completed()->sum('total_amount');
         $sale_returns = SaleReturn::completed()->sum('total_amount');
