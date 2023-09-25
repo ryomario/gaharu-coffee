@@ -30,8 +30,8 @@ return [
     |
     */
 
-    'use_ico_only' => true,
-    'use_full_favicon' => false,
+    'use_ico_only' => false,
+    'use_full_favicon' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -307,8 +307,9 @@ return [
             'text' => 'search',
         ],
         [
-            'text' => 'dashboard',
+            'text' => 'Dashboard',
             'url'  => 'home',
+            'icon' => 'fas fa-tachometer-alt',
         ],
         [
             'text'        => 'pages',
