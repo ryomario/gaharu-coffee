@@ -64,6 +64,6 @@ class User extends Authenticatable implements HasMedia
     }
 
     public function adminlte_desc() {
-        return 'Member since '.$this->created_at->format('M. Y');
+        return __('Member since ').$this->created_at->format('M. Y');
     }
 }
