@@ -259,7 +259,7 @@ return [
     'register_url' => false,
     'password_reset_url' => false,
     'password_email_url' => false,
-    'profile_url' => false,
+    'profile_url' => 'user/profile',
 
     /*
     |--------------------------------------------------------------------------
@@ -308,80 +308,80 @@ return [
         ],
         [
             'text' => 'Dashboard',
-            'url'  => 'home',
-            'icon' => 'fas fa-tachometer-alt',
+            'route'  => 'home',
+            'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Transaksi',
+            'route'  => 'app.pos.index',
+            'can'   => 'create_pos_sales',
+            'icon' => 'fas fa-fw fa-shopping-cart',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
+            'text'        => 'Produk',
+            'can'         => 'access_products',
+            'icon'        => 'fas fa-fw fa-th',
+            'submenu'     => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text'  => 'Kategori',
+                    'can'   => 'access_product_categories',
+                    'route'   => 'product-categories.index',
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text'  => 'Buat Produk',
+                    'can'   => 'create_products',
+                    'route'   => 'products.create',
                 ],
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text'  => 'Semua Produk',
+                    'route'   => 'products.index',
+                ],
+                [
+                    'text'  => 'Print Barcode',
+                    'can'   => 'print_barcodes',
+                    'route'   => 'barcode.print',
                 ],
             ],
         ],
-        ['header' => 'labels'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
+            'header' => 'PENGATURAN',
+            'can'    => ['edit_own_profile', 'access_user_management'],
         ],
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
+            'text'      => 'Profil',
+            'route'     => 'profile.edit',
+            'can'       => 'edit_own_profile',
+            'icon'      => 'fas fa-fw fa-id-card'
         ],
         [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
+            'text'        => 'Pengguna',
+            'can'         => 'access_user_management',
+            'icon'        => 'fas fa-fw fa-users',
+            'submenu'     => [
+                [
+                    'text'  => 'Tambah Pengguna',
+                    'route'   => 'users.create',
+                ],
+                [
+                    'text'  => 'Semua Pengguna',
+                    'route'   => 'users.index',
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Ijin & Peran',
+            'can'         => 'access_user_management',
+            'icon'        => 'fas fa-fw fa-key',
+            'submenu'     => [
+                [
+                    'text'  => 'Tambah Peran',
+                    'route'   => 'roles.create',
+                ],
+                [
+                    'text'  => 'Semua Peran & Ijin',
+                    'route'   => 'roles.index',
+                ],
+            ],
         ],
     ],
 
