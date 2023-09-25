@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard')
+@section('title', __('texts.dashboard'))
 
 @section('breadcrumb')
     <ol class="breadcrumb border-0 m-0">
-        <li class="breadcrumb-item active">Home</li>
+        <li class="breadcrumb-item"><a href="#">{{ __('texts.home') }}</a></li>
+        <li class="breadcrumb-item active">{{ __('texts.dashboard') }}</li>
     </ol>
 @endsection
 

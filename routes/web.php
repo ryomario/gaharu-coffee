@@ -27,5 +27,3 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/payment-flow/chart-data', 'HomeController@paymentChart')
         ->name('payment-flow.chart');
 });
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

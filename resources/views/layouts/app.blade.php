@@ -10,8 +10,13 @@
 
 
 @section('content_header')
-    @stack('breadcrumb')
-    @yield('breadcrumb')
+    <div class="col-sm-6">
+        <h1 class="m-0">@yield('title')</h1>
+    </div>
+    <div class=" col-sm-6">
+        @stack('breadcrumb')
+        @yield('breadcrumb')
+    </div>
 @endsection
 
 @section('footer')
