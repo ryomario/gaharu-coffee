@@ -353,7 +353,7 @@ return [
                 [
                     'text'  => 'Semua Produk',
                     'route'   => 'products.index',
-                    'active' => ['regex:@^products/*@'],
+                    'active' => ['regex:@^products/(?!create)@'],
                 ],
                 [
                     'text'  => 'Print Barcode',
@@ -375,7 +375,7 @@ return [
                 [
                     'text'  => 'Semua Penyesuaian Stok',
                     'route'   => 'adjustments.index',
-                    'active' => ['regex:@^adjustments/*@'],
+                    'active' => ['regex:@^adjustments/(?!create)@'],
                 ],
             ],
         ],
@@ -392,7 +392,7 @@ return [
                 [
                     'text'  => 'Semua Quotations',
                     'route'   => 'quotations.index',
-                    'active' => ['regex:@^quotations/*@'],
+                    'active' => ['regex:@^quotations/(?!create)@'],
                 ],
             ],
         ],
@@ -413,7 +413,7 @@ return [
                 [
                     'text'  => 'Semua Pembelian',
                     'route'   => 'purchases.index',
-                    'active' => ['regex:@^purchases/*@'],
+                    'active' => ['regex:@^purchases/(?!create)@'],
                 ],
             ],
         ],
@@ -430,7 +430,7 @@ return [
                 [
                     'text'  => 'Semua Retur Pembelian',
                     'route'   => 'purchase-returns.index',
-                    'active' => ['regex:@^purchase-returns/*@'],
+                    'active' => ['regex:@^purchase-returns/(?!create)@'],
                 ],
             ],
         ],
@@ -447,7 +447,7 @@ return [
                 [
                     'text'  => 'Semua Penjualan',
                     'route'   => 'sales.index',
-                    'active' => ['regex:@^sales/*@'],
+                    'active' => ['regex:@^sales/(?!create)@'],
                 ],
             ],
         ],
@@ -464,7 +464,7 @@ return [
                 [
                     'text'  => 'Semua Retur Penjualan',
                     'route'   => 'sale-returns.index',
-                    'active' => ['regex:@^sale-returns/*@'],
+                    'active' => ['regex:@^sale-returns/(?!create)@'],
                 ],
             ],
         ],
@@ -487,7 +487,7 @@ return [
                 [
                     'text'  => 'Semua Pengeluaran',
                     'route'   => 'expenses.index',
-                    'active' => ['regex:@^expenses/*@'],
+                    'active' => ['regex:@^expenses/(?!create)@'],
                 ],
             ],
         ],
@@ -561,7 +561,7 @@ return [
                 [
                     'text'  => 'Semua Pengguna',
                     'route'   => 'users.index',
-                    'active' => ['regex:@^users/*@'],
+                    'active' => ['regex:@^users/(?!create)@'],
                 ],
                 [
                     'text'  => 'Ijin & Peran',
