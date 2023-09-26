@@ -9,12 +9,14 @@
         <i class="{{ $makeIconClass() }}"></i>
 
         {{-- Badge --}}
-        <span class="{{ $makeBadgeClass() }}" style="    font-size: 8px !important; right: 0px; top: 5px;">
-            @php
-                $low_quantity_products = \Modules\Product\Entities\Product::select('id', 'product_quantity', 'product_stock_alert', 'product_code')->whereColumn('product_quantity', '<=', 'product_stock_alert')->get();
-                echo $low_quantity_products->count();
-            @endphp
-        </span>
+        @php
+            $low_quantity_products = \Modules\Product\Entities\Product::select('id', 'product_quantity', 'product_stock_alert', 'product_code')->whereColumn('product_quantity', '<=', 'product_stock_alert')->get();
+        @endphp
+        @if($low_quantity_products->count() >= 1)
+            <span class="{{ $makeBadgeClass() }}" style="    font-size: 8px !important; right: 0px; top: 5px;">
+                {{ $low_quantity_products->count() }}
+            </span>
+        @endif
 
     </a>
 
