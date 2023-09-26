@@ -70,7 +70,7 @@ class SettingController extends Controller
             Artisan::call('cache:clear');
 
             toast('Mail Settings Updated!', 'info');
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             Log::error($exception);
             session()->flash('settings_smtp_message', 'Something Went Wrong!');
         }

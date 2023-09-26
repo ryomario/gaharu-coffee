@@ -31,14 +31,12 @@
                 <div class="card-body shadow">
                     <ul class="list-group list-group-flush">
                         @foreach($search_results as $result)
-                            <li class="list-group-item list-group-item-action">
-                                <a wire:click="resetQuery" wire:click.prevent="selectProduct({{ $result }})" href="#">
-                                    {{ $result->product_name }} | {{ $result->product_code }}
-                                </a>
-                            </li>
+                            <button type="button" class="list-group-item list-group-item-action" wire:click="resetQuery" wire:click.prevent="selectProduct({{ $result }})">
+                                {{ $result->product_name }} | {{ $result->product_code }}
+                            </button>
                         @endforeach
                         @if($search_results->count() >= $how_many)
-                             <li class="list-group-item list-group-item-action text-center">
+                             <li class="list-group-item text-center">
                                  <a wire:click.prevent="loadMore" class="btn btn-primary btn-sm" href="#">
                                      Load More <i class="bi bi-arrow-down-circle"></i>
                                  </a>
