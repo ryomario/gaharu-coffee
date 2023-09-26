@@ -343,6 +343,7 @@ return [
                     'text'  => 'Kategori',
                     'can'   => 'access_product_categories',
                     'route'   => 'product-categories.index',
+                    'active' => ['regex:@^product-categories/*@'],
                 ],
                 [
                     'text'  => 'Buat Produk',
@@ -352,6 +353,7 @@ return [
                 [
                     'text'  => 'Semua Produk',
                     'route'   => 'products.index',
+                    'active' => ['regex:@^products/*@'],
                 ],
                 [
                     'text'  => 'Print Barcode',
@@ -361,19 +363,196 @@ return [
             ],
         ],
         [
+            'text'        => 'Penyesuaian Stok',
+            'can'         => 'access_adjustments',
+            'icon'        => 'fas fa-fw fa-clipboard-check',
+            'submenu'     => [
+                [
+                    'text'  => 'Tambah Stok',
+                    'can'   => 'create_adjustments',
+                    'route'   => 'adjustments.create',
+                ],
+                [
+                    'text'  => 'Semua Penyesuaian Stok',
+                    'route'   => 'adjustments.index',
+                    'active' => ['regex:@^adjustments/*@'],
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Quotations',
+            'can'         => 'access_quotations',
+            'icon'        => 'fas fa-fw fa-cart-arrow-down',
+            'submenu'     => [
+                [
+                    'text'  => 'Tambah Quotations',
+                    'can'   => 'create_quotations',
+                    'route'   => 'quotations.create',
+                ],
+                [
+                    'text'  => 'Semua Quotations',
+                    'route'   => 'quotations.index',
+                    'active' => ['regex:@^quotations/*@'],
+                ],
+            ],
+        ],
+        [
+            'header' => 'KEUANGAN',
+            'can'    => ['access_purchases', 'access_purchase_returns', 'access_sales', 'access_sale_returns', 'access_expenses'],
+        ],
+        [
+            'text'        => 'Pembelian',
+            'can'         => 'access_purchases',
+            'icon'        => 'fas fa-fw fa-shopping-bag',
+            'submenu'     => [
+                [
+                    'text'  => 'Tambah Pembelian',
+                    'can'   => 'create_purchase',
+                    'route'   => 'purchases.create',
+                ],
+                [
+                    'text'  => 'Semua Pembelian',
+                    'route'   => 'purchases.index',
+                    'active' => ['regex:@^purchases/*@'],
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Retur Pembelian',
+            'can'         => 'access_purchase_returns',
+            'icon'        => 'bi bi-arrow-return-right',
+            'submenu'     => [
+                [
+                    'text'  => 'Tambah Retur Pembelian',
+                    'can'   => 'create_purchase_returns',
+                    'route'   => 'purchase-returns.create',
+                ],
+                [
+                    'text'  => 'Semua Retur Pembelian',
+                    'route'   => 'purchase-returns.index',
+                    'active' => ['regex:@^purchase-returns/*@'],
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Penjualan',
+            'can'         => 'access_sales',
+            'icon'        => 'fas fa-fw fa-receipt',
+            'submenu'     => [
+                [
+                    'text'  => 'Tambah Penjualan',
+                    'can'   => 'create_sales',
+                    'route'   => 'sales.create',
+                ],
+                [
+                    'text'  => 'Semua Penjualan',
+                    'route'   => 'sales.index',
+                    'active' => ['regex:@^sales/*@'],
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Retur Penjualan',
+            'can'         => 'access_sale_returns',
+            'icon'        => 'bi bi-arrow-return-left',
+            'submenu'     => [
+                [
+                    'text'  => 'Tambah Retur Penjualan',
+                    'can'   => 'create_sale_returns',
+                    'route'   => 'sale-returns.create',
+                ],
+                [
+                    'text'  => 'Semua Retur Penjualan',
+                    'route'   => 'sale-returns.index',
+                    'active' => ['regex:@^sale-returns/*@'],
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Pengeluaran',
+            'can'         => 'access_expenses',
+            'icon'        => 'fas fa-fw fa-wallet',
+            'submenu'     => [
+                [
+                    'text'  => 'Kategori Pengeluaran',
+                    'can'   => 'access_expense_categories',
+                    'route'   => 'expense-categories.index',
+                    'active' => ['regex:@^expense-categories/*@'],
+                ],
+                [
+                    'text'  => 'Tambah Pengeluaran',
+                    'can'   => 'create_expenses',
+                    'route'   => 'expenses.create',
+                ],
+                [
+                    'text'  => 'Semua Pengeluaran',
+                    'route'   => 'expenses.index',
+                    'active' => ['regex:@^expenses/*@'],
+                ],
+            ],
+        ],
+        [
+            'header' => 'LAINNYA',
+            'can'    => ['access_customers', 'access_suppliers', 'access_reports'],
+        ],
+        [
+            'text'        => 'Mitra',
+            'can'         => ['access_customers', 'access_suppliers'],
+            'icon'        => 'fas fa-fw fa-users',
+            'submenu'     => [
+                [
+                    'text'  => 'Pelanggan',
+                    'can'   => 'access_customers',
+                    'route'   => 'customers.index',
+                    'active' => ['regex:@^customers/*@'],
+                ],
+                [
+                    'text'  => 'Pemasok',
+                    'can'   => 'access_suppliers',
+                    'route'   => 'suppliers.index',
+                    'active' => ['regex:@^suppliers/*@'],
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Laporan',
+            'can'         => 'access_reports',
+            'icon'        => 'fas fa-fw fa-chart-line',
+            'submenu'     => [
+                [
+                    'text'  => 'Profit / Loss Report',
+                    'route'   => 'profit-loss-report.index',
+                ],
+                [
+                    'text'  => 'Payments Report',
+                    'route'   => 'payments-report.index',
+                ],
+                [
+                    'text'  => 'Sales Report',
+                    'route'   => 'sales-report.index',
+                ],
+                [
+                    'text'  => 'Purchases Report',
+                    'route'   => 'purchases-report.index',
+                ],
+                [
+                    'text'  => 'Sales Return Report',
+                    'route'   => 'sales-return-report.index',
+                ],
+                [
+                    'text'  => 'Purchases Return Report',
+                    'route'   => 'purchases-return-report.index',
+                ],
+            ],
+        ],
+        [
             'header' => 'PENGATURAN',
             'can'    => ['edit_own_profile', 'access_user_management'],
         ],
         [
-            'text'      => 'Profil',
-            'route'     => 'profile.edit',
-            'can'       => 'edit_own_profile',
-            'icon'      => 'fas fa-fw fa-id-card'
-        ],
-        [
             'text'        => 'Pengguna',
             'can'         => 'access_user_management',
-            'icon'        => 'fas fa-fw fa-users',
+            'icon'        => 'fas fa-fw fa-users-cog',
             'submenu'     => [
                 [
                     'text'  => 'Tambah Pengguna',
@@ -382,21 +561,37 @@ return [
                 [
                     'text'  => 'Semua Pengguna',
                     'route'   => 'users.index',
+                    'active' => ['regex:@^users/*@'],
+                ],
+                [
+                    'text'  => 'Ijin & Peran',
+                    'route'   => 'roles.index',
+                    'active' => ['regex:@^roles/*@'],
                 ],
             ],
         ],
         [
-            'text'        => 'Ijin & Peran',
-            'can'         => 'access_user_management',
-            'icon'        => 'fas fa-fw fa-key',
+            'text'        => 'Pengaturan',
+            'can'         => ['access_currencies', 'access_settings', 'access_units'],
+            'icon'        => 'fas fa-fw fa-cogs',
             'submenu'     => [
                 [
-                    'text'  => 'Tambah Peran',
-                    'route'   => 'roles.create',
+                    'text'  => 'Units',
+                    'can' => 'access_units',
+                    'route'   => 'units.index',
+                    'active' => ['regex:@^units/*@'],
                 ],
                 [
-                    'text'  => 'Semua Peran & Ijin',
-                    'route'   => 'roles.index',
+                    'text'  => 'Currencies',
+                    'can' => 'access_currencies',
+                    'route'   => 'currencies.index',
+                    'active' => ['regex:@^currencies/*@'],
+                ],
+                [
+                    'text'  => 'Pengaturan Sistem',
+                    'can' => 'access_settings',
+                    'route'   => 'settings.index',
+                    'active' => ['regex:@^settings/*@'],
                 ],
             ],
         ],
