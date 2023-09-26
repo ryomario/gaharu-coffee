@@ -3,13 +3,18 @@
 <li class="{{ $makeListItemClass() }}" id="{{ $id }}">
 
     {{-- Link --}}
-    <a @if($enableDropdownMode) href="" @endif {{ $attributes->merge($makeAnchorDefaultAttrs()) }}>
+    <a @if($enableDropdownMode) href="#" @endif {{ $attributes->merge($makeAnchorDefaultAttrs()) }}>
 
         {{-- Icon --}}
         <i class="{{ $makeIconClass() }}"></i>
 
         {{-- Badge --}}
-        <span class="{{ $makeBadgeClass() }}">{{ $badgeLabel }}</span>
+        <span class="{{ $makeBadgeClass() }}" style="    font-size: 8px !important; right: 0px; top: 5px;">
+            @php
+                $low_quantity_products = \Modules\Product\Entities\Product::select('id', 'product_quantity', 'product_stock_alert', 'product_code')->whereColumn('product_quantity', '<=', 'product_stock_alert')->get();
+                echo $low_quantity_products->count();
+            @endphp
+        </span>
 
     </a>
 
@@ -19,19 +24,33 @@
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
 
             {{-- Custom dropdown content provided by external source --}}
-            <div class="adminlte-dropdown-content"></div>
+            <div class="adminlte-dropdown-content">
+                <div class="dropdown-header bg-light">
+                    <strong>{{ $low_quantity_products->count() }} Notifications</strong>
+                </div>
+                @forelse($low_quantity_products as $product)
+                    <a class="dropdown-item align-items-start" href="{{ route('products.show', $product->id) }}">
+                        <i class="bi bi-hash mr-1 text-primary"></i> 
+                        <span style="text-wrap: wrap; min-width: 15rem;">Product: "{{ $product->product_code }}" is low in quantity!</span>
+                    </a>
+                @empty
+                    <a class="dropdown-item" href="#">
+                        <i class="bi bi-app-indicator mr-2 text-danger"></i> No notifications available.
+                    </a>
+                @endforelse
+            </div>
 
             {{-- Dropdown divider --}}
-            <div class="dropdown-divider"></div>
+            <!-- <div class="dropdown-divider"></div> -->
 
             {{-- Dropdown footer with link --}}
-            <a href="{{ $attributes->get('href') }}" class="dropdown-item dropdown-footer">
+            <!-- <a href="{{ $attributes->get('href') }}" class="dropdown-item dropdown-footer">
                 @isset($dropdownFooterLabel)
                     {{ $dropdownFooterLabel }}
                 @else
                     <i class="fas fa-lg fa-search-plus"></i>
                 @endisset
-            </a>
+            </a> -->
 
         </div>
 
