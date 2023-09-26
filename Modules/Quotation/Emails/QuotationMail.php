@@ -12,6 +12,8 @@ class QuotationMail extends Mailable
     use Queueable, SerializesModels;
 
     public $quotation;
+    public $logo_base64;
+    public $style;
     /**
      * Create a new message instance.
      *
@@ -20,6 +22,11 @@ class QuotationMail extends Mailable
     public function __construct($quotation)
     {
         $this->quotation = $quotation;
+        $image_logo = public_path('images/logo-dark.png');
+        $this->logo_base64 = base64_encode(file_get_contents($image_logo));
+
+        $style_file = public_path('b3/bootstrap.min.css');
+        $this->style = file_get_contents($style_file);
     }
 
     /**

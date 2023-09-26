@@ -45,7 +45,7 @@ class SettingController extends Controller
 
     public function updateSmtp(StoreSmtpSettingsRequest $request) {
         $toReplace = array(
-            'MAIL_MAILER='.env('MAIL_HOST'),
+            'MAIL_MAILER='.env('MAIL_MAILER'),
             'MAIL_HOST="'.env('MAIL_HOST').'"',
             'MAIL_PORT='.env('MAIL_PORT'),
             'MAIL_FROM_ADDRESS="'.env('MAIL_FROM_ADDRESS').'"',
@@ -75,6 +75,7 @@ class SettingController extends Controller
             session()->flash('settings_smtp_message', 'Something Went Wrong!');
         }
 
-        return redirect()->route('settings.index');
+        // use to_route because the cache is cleared before
+        return to_route('settings.index');
     }
 }
